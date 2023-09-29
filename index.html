@@ -19,21 +19,28 @@
     <header class="header">
         <div class="header__container container">
             <div class="header__content">
-                <div class="title">
-                    <img class="title-img" src="./assets/svg/camera.svg" alt="photo">
-                    <p class="title-text">Unsplash API</p>
-                </div>
-             <div class="search">
-                 <input class="search-input" type="text" placeholder="Search..."> <span class="search-img"></span>
-             </div>
+                <!-- <img class="title-img" src="./assets/svg/camera.svg" alt="photo"> -->
+                <p class="info">Unsplash API</p>
+                <h1 class="title">Image Galery</h1>
+                <form name="search-form" action="" autocomplete="off" class="search-form" form="search-form">
+                    <input id="search-input" class="search-input" type="search" name="search-input" placeholder="Search..."
+                        autofocus autocomplete="off">
+                    <button id="submit" type="submit"><span class="search-img"></span></button>
+                </form>
             </div>
         </div>
     </header>
 
     <main class="main">
         <div class="main__container container">
-            <div class="main__content">
-
+            <div class="main__content gallery-container">
+                <img class="gallery-img" src="./assets/images/IMG_4477.jpeg">
+                <img class="gallery-img" src="./assets/images/IMG_4482.jpeg">
+                <img class="gallery-img" src="./assets/images/IMG_4487.jpeg">
+                <img class="gallery-img" src="./assets/images/IMG_4494.jpeg">
+                <img class="gallery-img" src="./assets/images/IMG_4506.jpeg">
+                <img class="gallery-img" src="./assets/images/IMG_4645.jpeg">
+                <img class="gallery-img" src="./assets/images/IMG_4660.jpeg">
             </div>
         </div>
     </main>
@@ -62,6 +69,6 @@
 
 </body>
 
-<script type="module" src="js/index.js"></script>
+<script type="module" src="index.js"></script>
 
 </html>
