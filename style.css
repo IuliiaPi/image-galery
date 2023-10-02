@@ -64,7 +64,7 @@ html,
 /*  -------------------------  Header styles start -------------------------------  */
 
 .header__container {
-border-bottom: solid 5px rgb(199, 215, 236);
+    border-bottom: solid 5px rgb(199, 215, 236);
 }
 
 .header__content {
@@ -79,7 +79,7 @@ border-bottom: solid 5px rgb(199, 215, 236);
 }
 
 .info {
-    font-size: 0.9rem;  
+    font-size: 0.9rem;
     font-style: italic;
 }
 
@@ -88,23 +88,42 @@ border-bottom: solid 5px rgb(199, 215, 236);
 }
 
 .search-form {
-   width: 220px;
-   height: 30px;
-   padding-left: 7px;
+    width: 220px;
+    height: 30px;
+    padding-left: 7px;
 
-   display: flex;
-   align-items: center;
+    display: flex;
+    align-items: center;
 
-   border: solid 1px rgb(158, 158, 174);
-   border-radius: 10px;
-   background-color: aliceblue;
-   cursor: pointer;
+    border: solid 1px rgb(158, 158, 174);
+    border-radius: 10px;
+    background-color: aliceblue;
+    /* cursor: pointer; */
 }
 
 .search-input {
-    outline: none; 
+    outline: none;
+    background-color: aliceblue;
+    /* cursor: pointer; */
+}
+
+.search-img {
+    width: 20px;
+    height: 20px;
+    margin-left: 30px;
     background-color: aliceblue;
     cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.search-img:hover {
+    opacity: 0.7;
+}
+
+.search-img:active {
+    width: 22px;
+    height: 22px;
+    opacity: 1;
 }
 
 /*  -------------------------  Header styles end -------------------------------  */
@@ -114,7 +133,7 @@ border-bottom: solid 5px rgb(199, 215, 236);
 .main {
     flex: 1 0 auto;
 
-  
+
     transition: all 2s ease;
 
     display: flex;
@@ -129,7 +148,7 @@ border-bottom: solid 5px rgb(199, 215, 236);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
     gap: 15px 10px;
 }
 
@@ -138,6 +157,7 @@ border-bottom: solid 5px rgb(199, 215, 236);
     height: 300px;
     border-radius: 5px;
 }
+
 /*  -------------------------  Main styles end -------------------------------  */
 
 /*  -------------------------  Footer styles start -------------------------------  */

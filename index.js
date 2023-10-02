@@ -1,40 +1,83 @@
+const searchInput = document.querySelector('.search-input')
+searchInput.value = '';
+
+let enterText;
+
 const galleryContainer = document.querySelector('.gallery-container')
 
-const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
+// const imageSrc = `https://api.unsplash.com/search/photos?query=${searchInput.value}&per_page=30&orientation=landscape&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow`;
 
-function showData(data) {
-const img = document.createElement('img');
-img.classList.add('gallery-img');
-// img.src = 'https://api.unsplash.com/photos/random?query=morning&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
-img.src = url;
-img.alt = `image`;
-galleryContainer.append(img);
+function setLocalStorage() {
+    localStorage.setItem('enterText', searchInput.value);
 }
-// const url = 'https://api.unsplash.com/search/photos?query=spring&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
+window.addEventListener('beforeunload', setLocalStorage);
 
-async function getData() {
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log(data);
-    showData(data);
-}
-getData();
+function getLocalStorage() {
+    if (localStorage.getItem('enterText')) {
+        searchInput.value = localStorage.getItem('enterText');
 
-// async function getLinkToImage() {
-//     const res = await fetch(url);
-//     const data = await res.json();
-//     console.log(data.urls.regular);
-// }
-// getLinkToImage();
+        enterText = searchInput.value;
+        console.log(enterText);
 
-// function showData(data) {
-//     const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
-// }
+        async function getData() {
+            const url = `https://api.unsplash.com/search/photos?query=${enterText}&per_page=30&orientation=landscape&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow`;
 
-const searchForm = document.querySelector('.search-form')
+            const res = await fetch(url);
+            const data = await res.json();
+            console.log(data);
+            // console.log(data.urls.regular);
 
-document.onkeydown = () => {
-    if(e.keyCode === 13) {
-        searchForm.submit();
+            for (let i = 0; i < data.length; i++) {
+                const img = document.createElement('img');
+                img.classList.add('gallery-img');
+                // img.src = 'https://api.unsplash.com/photos/random?query=morning&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
+                img.src = data.url;
+                img.alt = `image`;
+                galleryContainer.append(img);
+            };
+
+            // showData(data);
+        }
+        getData();
+
+        const searchForm = document.querySelector('.search-form');
+        const searchImg = document.querySelector('.search-img');
+
+        document.onkeydown = (e) => {
+            if (e.keyCode === 13) {
+                searchForm.submit();
+                getData();
+            }
+        }
+
+        searchImg.addEventListener("click", getData);
     }
 }
+window.addEventListener('load', getLocalStorage);
+
+
+
+const img1 = document.querySelector('.img1')
+
+// function showData(data) {
+//     const img = document.createElement('img');
+//     img.classList.add('gallery-img');
+//     // img.src = 'https://api.unsplash.com/photos/random?query=morning&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
+//     img.src = imageSrc;
+//     img.alt = `image`;
+//     galleryContainer.append(img);
+// }
+
+// function setImage() {
+//     const img = new Image();
+//     const imageSrc = `https://api.unsplash.com/search/photos?query=${enterText}&per_page=30&orientation=landscape&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow`;
+//     img.src = imageSrc;
+//     img.addEventListener('load', () => {  //  or  img.onload = () => {
+//         //  img1.src = imageSrc;
+//         showData(data);
+//     });
+// };
+// setImage();
+
+
+
