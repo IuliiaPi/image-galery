@@ -3,9 +3,15 @@ searchInput.value = '';
 
 let enterText;
 
-const galleryContainer = document.querySelector('.gallery-container')
+// if (searchInput.value === '') {
+//     searchInput.value = 'ice';
+// }
 
-// const imageSrc = `https://api.unsplash.com/search/photos?query=${searchInput.value}&per_page=30&orientation=landscape&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow`;
+const url = 'https://api.unsplash.com/';
+const accessKey = 'zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
+const perPage = 12;
+
+const galleryContainer = document.querySelector('.gallery-container')
 
 function setLocalStorage() {
     localStorage.setItem('enterText', searchInput.value);
@@ -19,31 +25,35 @@ function getLocalStorage() {
         enterText = searchInput.value;
         console.log(enterText);
 
-        async function getData() {
-            const url = `https://api.unsplash.com/search/photos?query=${enterText}&per_page=30&orientation=landscape&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow`;
+        const imageSrc = `${url}search/photos?query=${enterText}&per_page=${perPage}&orientation=landscape&client_id=${accessKey}`;
 
-            const res = await fetch(url);
+        async function getData() {
+            const res = await fetch(imageSrc);
             const data = await res.json();
             console.log(data);
-            // console.log(data.urls.regular);
+            showData(data);
+        }
 
-            for (let i = 0; i < data.length; i++) {
+        function showData(data) {
+            const results = data.results;
+            console.log(results);
+            // console.log(data.urls.regular);
+            galleryContainer.innerHTML = '';
+
+            results.map((result) => {
                 const img = document.createElement('img');
                 img.classList.add('gallery-img');
-                // img.src = 'https://api.unsplash.com/photos/random?query=morning&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
-                img.src = data.url;
+                img.src = result.urls.small;
                 img.alt = `image`;
                 galleryContainer.append(img);
-            };
-
-            // showData(data);
+            });
         }
         getData();
 
         const searchForm = document.querySelector('.search-form');
         const searchImg = document.querySelector('.search-img');
 
-        document.onkeydown = (e) => {
+        document.onkeydown = () => {
             if (e.keyCode === 13) {
                 searchForm.submit();
                 getData();
@@ -56,17 +66,16 @@ function getLocalStorage() {
 window.addEventListener('load', getLocalStorage);
 
 
-
-const img1 = document.querySelector('.img1')
-
-// function showData(data) {
-//     const img = document.createElement('img');
-//     img.classList.add('gallery-img');
-//     // img.src = 'https://api.unsplash.com/photos/random?query=morning&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
-//     img.src = imageSrc;
-//     img.alt = `image`;
-//     galleryContainer.append(img);
+// window.onload = function () {
+//     getData();
 // }
+
+// closeBtn = document.querySelector('.close-button');
+// closeBtn.addEventListener('click', () => {
+//     searchInput.value = '';
+// });
+
+
 
 // function setImage() {
 //     const img = new Image();
