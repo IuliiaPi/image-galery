@@ -10,9 +10,33 @@ if (searchInput.value === '') {
 
 const url = 'https://api.unsplash.com/';
 const accessKey = 'zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow';
-const perPage = 12;
+const perPage = 18;
+const imageSrc = `${url}search/photos?query=${enterText}&per_page=${perPage}&orientation=landscape&client_id=${accessKey}`;
 
-const galleryContainer = document.querySelector('.gallery-container')
+const galleryContainer = document.querySelector('.gallery-container');
+
+async function getData() {
+    const res = await fetch(imageSrc);
+    const data = await res.json();
+    console.log(data);
+    showData(data);
+}
+
+function showData(data) {
+    const results = data.results;
+
+    results.map((result) => {
+        const img = document.createElement('img');
+        img.classList.add('gallery-img');
+        img.src = result.urls.small;
+        img.alt = `image`;
+        galleryContainer.append(img);
+    });
+}
+
+window.onload = function () {
+    getData();
+}
 
 function setLocalStorage() {
     localStorage.setItem('enterText', searchInput.value);
@@ -66,46 +90,10 @@ function getLocalStorage() {
 window.addEventListener('load', getLocalStorage);
 
 
-window.onload = function () {
-    async function getData() {
-        const imageSrc = `${url}search/photos?query=${enterText}&per_page=${perPage}&orientation=landscape&client_id=${accessKey}`;
-        const res = await fetch(imageSrc);
-        const data = await res.json();
-        console.log(data);
-        showData(data);
-    }
-
-    function showData(data) {
-        const results = data.results;
-
-        results.map((result) => {
-            const img = document.createElement('img');
-            img.classList.add('gallery-img');
-            img.src = result.urls.small;
-            img.alt = `image`;
-            galleryContainer.append(img);
-        });
-    }
-    getData();
-}
-
 // closeBtn = document.querySelector('.close-button');
 // closeBtn.addEventListener('click', () => {
 //     searchInput.value = '';
 // });
-
-
-
-// function setImage() {
-//     const img = new Image();
-//     const imageSrc = `https://api.unsplash.com/search/photos?query=${enterText}&per_page=30&orientation=landscape&client_id=zCHXfBFZzSS0FdFvKMsQaROLD0Lvm4LfJgDM3T2t5Ow`;
-//     img.src = imageSrc;
-//     img.addEventListener('load', () => {  //  or  img.onload = () => {
-//         //  img1.src = imageSrc;
-//         showData(data);
-//     });
-// };
-// setImage();
 
 
 
