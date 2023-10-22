@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="image galery">
-    <meta name="keywords" content="image galery, Iuliia Pidlisna">
+    <meta name="keywords" content="image galery, Unsplash API, Iuliia Pidlisna">
     <meta name="author" content="Iuliia Pidlisna">
 
     <link rel="shortcut icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="style.css">
-    <title>image galery</title>
+    <title>Image Galery</title>
 </head>
 
 <body class="page">
@@ -25,7 +25,8 @@
                     <input id="search-input" class="search-input" type="search" name="search-input"
                         placeholder="Search..." autofocus autocomplete="off">
                     <!-- <button class="close-button">X</button> -->
-                    <button id="submit" type="submit"><img class="search-img" src="./assets/svg/search.svg" alt="search">
+                    <button id="submit" type="submit"><img class="search-img" src="./assets/svg/search.svg"
+                            alt="search">
                     </button>
                 </form>
             </div>
@@ -36,6 +37,7 @@
         <div class="main__container container">
             <div class="main__content gallery-container">
             </div>
+            <button type="button" class="btn-show-more">Show more</button>
         </div>
     </main>
 
@@ -61,8 +63,8 @@
         </div>
     </footer>
 
-</body>
+    <script type="module" src="index.js"></script>
 
-<script type="module" src="index.js"></script>
+</body>
 
 </html>

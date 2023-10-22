@@ -92,8 +92,8 @@ html,
 }
 
 .search-form {
-    width: 220px;
-    height: 30px;
+    width: 260px;
+    height: 39px;
     padding: 0 8px;
 
     display: flex;
@@ -103,19 +103,18 @@ html,
     border: solid 1px rgb(158, 158, 174);
     border-radius: 10px;
     background-color: aliceblue;
-    /* cursor: pointer; */
 }
 
 .search-input {
+    font-size: 1.0rem;
+    color: rgb(109, 121, 136);
     outline: none;
     background-color: aliceblue;
-    /* cursor: pointer; */
 }
 
 .search-img {
     width: 20px;
     height: 20px;
-    /* margin-left: 30px; */
     background-color: aliceblue;
     cursor: pointer;
     transition: all 0.3 ease;
@@ -147,8 +146,16 @@ html,
     background-color: aliceblue;
 }
 
-.gallery-container {
+.main__container {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.gallery-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -157,9 +164,47 @@ html,
 }
 
 .gallery-img {
-    width: 400px;
+    width: 430px;
     height: 300px;
     border-radius: 5px;
+    cursor: zoom-in;
+    transition: all 0.3s ease;
+}
+
+.gallery-img:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.btn-show-more {
+    display: block;
+    padding: 16px 28px;
+    font-size: 1rem;
+    color: rgb(211, 229, 244);
+    background-color: rgb(128, 166, 189);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3 ease;
+}
+
+.btn-show-more._hidden {
+    display: none;
+}
+
+.btn-show-more._error {
+    font-size: 1.2rem;
+    color: rgb(255, 0, 0);
+    background-color: rgb(249, 203, 203);
+    box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-show-more:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.btn-show-more:active {
+    opacity: 1;
 }
 
 /*  -------------------------  Main styles end -------------------------------  */
@@ -193,7 +238,7 @@ html,
 
 /*  -------------------------  Media styles start -------------------------------  */
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
 
     .page {
         font-size: 1.1rem;
@@ -204,35 +249,35 @@ html,
     }
 
     .gallery-img {
-        width: 350px;
+        width: 380px;
         height: 280px;
     }
 
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 820px) {
 
     .gallery-img {
-        width: 300px;
+        width: 340px;
         height: 230px;
     }
 
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 730px) {
 
     .title {
         font-size: 1.3rem;
     }
 
     .gallery-img {
-        width: 250px;
+        width: 280px;
         height: 190px;
     }
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
 
     .page {
         font-size: 0.8rem;
@@ -253,7 +298,7 @@ html,
     }
 
     .gallery-img {
-        width: 300px;
+        width: 330px;
         height: 230px;
     }
 
