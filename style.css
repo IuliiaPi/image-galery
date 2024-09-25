@@ -193,9 +193,12 @@ html,
 
 .btn-show-more._error {
     font-size: 1.2rem;
-    color: rgb(255, 0, 0);
-    background-color: rgb(249, 203, 203);
+    color: rgb(237, 81, 81);
+    background-color: transparent;
+    /* background-color: rgb(249, 203, 203); */
+    border: 1px solid rgb(219, 109, 109);
     box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.2);
+    cursor: auto;
 }
 
 .btn-show-more:hover {
@@ -204,6 +207,15 @@ html,
 }
 
 .btn-show-more:active {
+    opacity: 1;
+}
+
+.btn-show-more._error:hover {
+    opacity: 1;
+    box-shadow: 0 0 0.9rem rgba(0, 0, 0, 0.2);
+}
+
+.btn-show-more._error:active {
     opacity: 1;
 }
 

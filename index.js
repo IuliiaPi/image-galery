@@ -120,7 +120,7 @@ function getLocalStorage() {
 
             if (results.length === 0) {
                 btnShowMore.classList.remove('_hidden');
-                btnShowMore.innerHTML = 'Try again';
+                btnShowMore.innerHTML = 'Try Again';
                 btnShowMore.classList.add('_error');
             }
         }
